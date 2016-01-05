@@ -19,3 +19,56 @@ pyweek/
 │       └── question.md
 └── week_2          // 第 2 周的挑战题目
 ```
+
+## 使用步骤
+0. 安装好python开发环境与git
+
+1. Fork本项目至自己的github仓库
+  * 点击上方的Fork按钮
+  * 至此，你自己的仓库中应该有一个叫做pyweek的项目。链接为：https://github.com/yourname/pyweek
+
+2. clone你的项目到本地
+  * 打开你的shell，进入你的工作目录，例如： cd ~/workspace/
+  * clone项目： git clone https://github.com/yourname/pyweek.git
+  * 至此，workspace/pyweek 就有了。
+
+3. 设置上游仓库
+  * 先查看远程仓库
+      ```
+      $ cd ~/workspace/pyweek
+      ~/workspace/pyweek $ git remote -v
+      origin    https://github.com/yourname/pyweek.git (fetch)
+      origin    https://github.com/yourname/pyweek.git (push)
+      ```
+
+  * 添加上游远程仓库
+      ```
+      ~/workspace/pyweek $ git remote add upstream https://github.com/pyweek/pyweek.git
+      ```
+
+4. 同步上游master(主干)分支最新代码(每次工作前都应先同步代码，避免较多的冲突)
+     ```
+     ~/workspace/pyweek $ git pull --rebase upstream master
+     ```
+
+5. 添加自己的目录与文件
+    ```
+    ~/workspace/pyweek $ cd week_1/answers
+    ~/workspace/pyweek/week_1/answers $ mkdir yourname
+    ~/workspace/pyweek/week_1/answers $ cd yourname
+    ~/workspace/pyweek/week_1/answers/yourname $ vim answer.py
+    ```
+
+6. 提交代码至自己的仓库
+    ```
+    $ cd ~/workspace/pyweek
+    ~/workspace/pyweek $ git status
+    ~/workspace/pyweek $ git add week_1/answers/yourname/
+    ~/workspace/pyweek $ git commit -m "基于xx算法的无敌超级答案"   # 注释说明你这次修改做了什么，不要一个词语 update, fix 之类的
+    ~/workspace/pyweek $ git pull --rebase upstream master          # 再次与上游同步，也许你工作期间别人已经提交了代码，解决冲突
+    ~/workspace/pyweek $ git push origin master                     # 将解决冲突无误后的代码提交至自己远程仓库中的 master 分支, 大项目开发时也许是develop分支，也许是bug-fix分支
+    ```
+
+7. 登录github进入自己的项目向上游仓库发起 Pull Request 等待被合并
+
+**注意，一定要养成在开始工作前与提交代码前从上游仓库同步最新代码的习惯**
